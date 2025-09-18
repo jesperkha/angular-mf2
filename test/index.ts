@@ -1,4 +1,4 @@
-import { type BaseArguments, type BaseTranslation, newGroup, load as generate } from "../src/index.ts";
+import { type BaseArguments, type BaseTranslation, newGroup, generate } from "../src/index.ts";
 
 // Define base translation schema
 type Translation = BaseTranslation & {

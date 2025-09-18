@@ -1,4 +1,5 @@
 import { MessageFormat } from "messageformat";
+import sanitizeHtml from "sanitize-html";
 
 export type BaseTranslation = Record<string, string>;
 export type BaseArguments = Record<string, any>;
@@ -24,7 +25,7 @@ export function newGroup<T extends BaseTranslation>(
     };
 }
 
-export function load<T extends BaseTranslation, A extends BaseArguments>(
+export function generate<T extends BaseTranslation, A extends BaseArguments>(
     locale: string,
     group: TranslationGroup<T>,
     args: A
@@ -45,15 +46,20 @@ export function load<T extends BaseTranslation, A extends BaseArguments>(
 }
 
 function mf2Format<T extends BaseTranslation, A extends BaseArguments>(locale: string, t: T, a: A): T {
-    const formatted: Record<string, string> = {};
+    const result: Record<string, string> = {};
 
     for (const key in t) {
         if (!Object.prototype.hasOwnProperty.call(t, key)) continue;
 
         const raw = t[key];
         const mf2 = new MessageFormat(locale, raw);
-        formatted[key] = mf2.format(a);
+        const formatted = mf2.format(a);
+
+        result[key] = sanitizeHtml(formatted, {
+            allowedTags: [],
+            allowedAttributes: {},
+        });
     }
 
-    return formatted as T;
+    return result as T;
 }
