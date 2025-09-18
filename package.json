@@ -6,14 +6,18 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ts-node test/index.ts"
+  },
+  "exports": {
+    ".": "./src/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "@types/node": "^24.5.1",
+    "messageformat": "4.0.0-13",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
   },
