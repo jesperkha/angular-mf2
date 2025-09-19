@@ -1,4 +1,9 @@
-import { type BaseArguments, type BaseTranslation, newGroup, generate } from "../src/index.ts";
+import {
+    type BaseArguments,
+    type BaseTranslation,
+    newGroup,
+    generate,
+} from "../src/index.ts";
 
 // Define base translation schema
 type Translation = BaseTranslation & {
@@ -18,6 +23,10 @@ const no: Translation = {
     greeting: "Hei {$name}! Hvordan går det?",
 };
 
+// TODO: escape html
+// TODO: integrate with angular and use global state
+// TODO: use the json parts to html parser when generating
+
 // Group the translations together. Define a default translations (en).
 const group = newGroup("en", { en, no });
 
@@ -28,3 +37,4 @@ if (res.ok) {
 } else {
     console.error(res.error);
 }
+
