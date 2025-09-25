@@ -1,7 +1,7 @@
 // i18n.store.ts
 import { Injectable } from '@angular/core';
 import { I18nConfig } from './types';
-import { newGroup, generate } from './mf2'; // <— your MF2 engine (sanitize inside engine)
+import { newGroup, generate } from './mf2';
 
 /**
  * I18nStore
