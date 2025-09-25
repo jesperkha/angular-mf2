@@ -31,7 +31,7 @@ const no: Translation = {
 const group = newGroup("en", { en, no });
 
 // Get the requested locale formatted with the given arguments.
-const res = generate("no", group, { name: "John" } as Args);
+const res = generate("no", group, { name: "Bob" } as Args);
 if (res.ok) {
     console.log(res.value.greeting);
 } else {

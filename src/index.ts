@@ -1,4 +1,4 @@
-import { MessageFormat } from "messageformat";
+import { MessageFormat, type MessageMarkupPart, type MessagePart } from "messageformat";
 import sanitizeHtml from "sanitize-html";
 
 export type BaseTranslation = Record<string, string>;
@@ -53,13 +53,54 @@ function mf2Format<T extends BaseTranslation, A extends BaseArguments>(locale: s
 
         const raw = t[key];
         const mf2 = new MessageFormat(locale, raw);
-        const formatted = mf2.format(a);
+        const parts = mf2.formatToParts(a);
+        const formatted = partsToHtml(parts);
 
         result[key] = sanitizeHtml(formatted, {
-            allowedTags: [],
+            allowedTags: ["b", "i", "a", "span"], // Only allow tags used by mf2
             allowedAttributes: {},
+            disallowedTagsMode: "escape",
         });
     }
 
     return result as T;
+}
+
+function partsToHtml(parts: MessagePart<never>[]): string {
+    const result = [];
+
+    for (const part of parts) {
+        switch (part.type) {
+            case "text":
+            case "string":
+                result.push(part.value);
+                break;
+
+            case "markup":
+                result.push(markupToHtml(part));
+                break;
+        }
+    }
+
+    return result.join("");
+}
+
+function markupToHtml(part: MessageMarkupPart): string {
+    const name = part.name?.trim().toLowerCase();
+
+    switch (name) {
+        case "bold":
+            return part.kind === "open" ? "<b>" : "</b>";
+        case "italic":
+            return part.kind === "open" ? "<i>" : "</i>";
+        case "error":
+            return part.kind === "open" ? `<span style="color:red">` : "</span>";
+        case "link":
+            if (part.options) {
+                return `<a href="${part.options.to}">`;
+            }
+            return part.kind === "open" ? `<a style="text-decoration: underline">` : "</a>";
+        default:
+            return "";
+    }
 }
