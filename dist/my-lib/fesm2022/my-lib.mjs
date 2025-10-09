@@ -10,15 +10,15 @@ class Logger {
         console.log(message);
         return message;
     }
-    static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "20.3.2", ngImport: i0, type: Logger, deps: [], target: i0.ɵɵFactoryTarget.Injectable });
-    static ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "20.3.2", ngImport: i0, type: Logger, providedIn: 'root' });
+    static ɵfac = function Logger_Factory(__ngFactoryType__) { return new (__ngFactoryType__ || Logger)(); };
+    static ɵprov = /*@__PURE__*/ i0.ɵɵdefineInjectable({ token: Logger, factory: Logger.ɵfac, providedIn: 'root' });
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.3.2", ngImport: i0, type: Logger, decorators: [{
-            type: Injectable,
-            args: [{
-                    providedIn: 'root'
-                }]
-        }] });
+(() => { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(Logger, [{
+        type: Injectable,
+        args: [{
+                providedIn: 'root'
+            }]
+    }], null, null); })();
 
 class I18nPipe {
     logger = inject(Logger);
@@ -28,17 +28,17 @@ class I18nPipe {
     transform(key, args) {
         return this.logger.log("TESTS");
     }
-    static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "20.3.2", ngImport: i0, type: I18nPipe, deps: [], target: i0.ɵɵFactoryTarget.Pipe });
-    static ɵpipe = i0.ɵɵngDeclarePipe({ minVersion: "14.0.0", version: "20.3.2", ngImport: i0, type: I18nPipe, isStandalone: true, name: "i18n" });
+    static ɵfac = function I18nPipe_Factory(__ngFactoryType__) { return new (__ngFactoryType__ || I18nPipe)(); };
+    static ɵpipe = /*@__PURE__*/ i0.ɵɵdefinePipe({ name: "i18n", type: I18nPipe, pure: true });
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.3.2", ngImport: i0, type: I18nPipe, decorators: [{
-            type: Pipe,
-            args: [{
-                    name: 'i18n',
-                    standalone: true,
-                    pure: true,
-                }]
-        }] });
+(() => { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(I18nPipe, [{
+        type: Pipe,
+        args: [{
+                name: 'i18n',
+                standalone: true,
+                pure: true,
+            }]
+    }], null, null); })();
 
 ;
 // export const I18N_CONFIG: InjectionToken<I18nConfig> = new InjectionToken<I18nConfig>(
