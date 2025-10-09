@@ -1,13 +1,11 @@
-import { Catalogs, i18nConfig } from './types';
+import { Catalogs, i18nConfig, I18nConfig } from './types';
 import { generate, newGroup } from './mf2';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 
-@Injectable({ providedIn: 'root' })
 export class I18nStore {
   private locale: string;
   private defaultLocale: string;
   private catalogs: Catalogs;
-
   constructor() {
     const config = i18nConfig; // TODO: inject
 

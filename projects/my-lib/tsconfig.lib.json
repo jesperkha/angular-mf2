@@ -10,7 +10,8 @@
     "types": []
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "src/lib/logger.service"
   ],
   "exclude": [
     "**/*.spec.ts"
