@@ -21,6 +21,7 @@
     "module": "preserve"
   },
   "angularCompilerOptions": {
+    "compilationMode": "aot",
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
