@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Catalogs, i18nConfig } from './types';
+import { Catalogs, mf2Config } from './config';
 import { generate, newGroup } from './mf2';
 
 @Injectable({ providedIn: 'root' })
@@ -14,7 +14,7 @@ export class Store {
   }
 
   constructor() {
-    const config = i18nConfig;
+    const config = mf2Config;
     this.defaultLocale = config.defaultLocale;
     this.locale = this.defaultLocale;
     this.catalogs = config.catalogs;

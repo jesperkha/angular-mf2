@@ -2,11 +2,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Store } from './store';
 
 @Pipe({
-  name: 'i18n',
+  name: 'mf2',
   standalone: true,
   pure: false, // <— impure so it re-evaluates when Store changes
 })
-export class I18nPipe implements PipeTransform {
+export class MF2Pipe implements PipeTransform {
   constructor(private store: Store) {}
 
   transform(key: unknown, args?: Record<string, unknown>): string {

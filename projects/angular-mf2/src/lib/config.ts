@@ -1,11 +1,11 @@
 export type Catalogs = Record<string, Record<string, string>>; // { 'en': Translation, 'no': Translation }
 
-export type I18nConfig = {
+export type MF2Config = {
   defaultLocale: string;
   catalogs: Catalogs; // you’ll pass { en, no } here
 };
 
-export const i18nConfig: I18nConfig = {
+export const mf2Config: MF2Config = {
   defaultLocale: 'en',
   catalogs: {
     en: {
