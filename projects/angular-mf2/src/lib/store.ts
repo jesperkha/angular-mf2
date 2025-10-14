@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Catalogs, mf2Config } from './config';
+import { Inject, Injectable } from '@angular/core';
 import { generate, newGroup } from './mf2';
+import { Catalogs, MF2_CONFIG, MF2Config } from './config.token';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class Store {
   private locale: string;
   private defaultLocale: string;
@@ -13,8 +13,7 @@ export class Store {
     return value;
   }
 
-  constructor() {
-    const config = mf2Config;
+  constructor(@Inject(MF2_CONFIG) config: MF2Config) {
     this.defaultLocale = config.defaultLocale;
     this.locale = this.defaultLocale;
     this.catalogs = config.catalogs;

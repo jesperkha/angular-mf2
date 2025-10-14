@@ -4,4 +4,4 @@
 
 export * from './lib/pipe';
 export * from './lib/store';
-export * from './lib/config';
+export * from './lib/config.token';

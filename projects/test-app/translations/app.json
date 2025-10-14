@@ -1,0 +1,8 @@
+{
+    "en": {
+        "greeting": "Hello {$name}, how are you?"
+    },
+    "no": {
+        "greeting": "Hei {$name}, hvordan går det?"
+    }
+}
