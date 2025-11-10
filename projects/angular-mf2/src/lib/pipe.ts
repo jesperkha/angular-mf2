@@ -7,7 +7,7 @@ import { Store } from './store';
   pure: false, // <— impure so it re-evaluates when Store changes
 })
 export class MF2Pipe implements PipeTransform {
-  constructor(private store: Store) {}
+  constructor(private store: Store) { }
 
   transform(key: unknown, args?: Record<string, unknown>): string {
     const k = key == null ? '' : String(key);

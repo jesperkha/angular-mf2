@@ -6,6 +6,6 @@
     "declarationMap": false
   },
   "angularCompilerOptions": {
-    "compilationMode": "aot"
+    "compilationMode": "partial"
   }
 }
